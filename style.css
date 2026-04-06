@@ -114,6 +114,10 @@ p {
   overflow: auto;
 }
 
+.card h1,
+.card h2,
+.card h3,
+.card h4,
 .auth-card h1 {
   margin-bottom: 0px;
   font-size: 1rem;
@@ -190,11 +194,12 @@ textarea {
   background: rgba(255, 255, 255, 0.95);
   color: var(--text);
   outline: none;
+  font-size: smaller;
 }
 
 textarea {
   resize: vertical;
-  min-height: 80px;
+  min-height: 50px;
 }
 
 .primary-btn,
