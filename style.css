@@ -57,6 +57,10 @@ body {
   z-index: 1;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .hidden {
   display: none !important;
 }
@@ -252,6 +256,59 @@ textarea {
 
 .dashboard {
   gap: 14px;
+}
+
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.dashboard-content {
+  display: grid;
+  gap: 14px;
+}
+
+.nav-section {
+  display: grid;
+  gap: 14px;
+}
+
+.hidden-section {
+  display: none !important;
+}
+
+.sidebar {
+  position: sticky;
+  top: 14px;
+  padding: 18px 14px;
+}
+
+.sidebar-menu {
+  display: grid;
+  gap: 10px;
+}
+
+.sidebar-link {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(238, 241, 242, 0.85);
+  border: 0;
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-align: left;
+}
+
+.sidebar-link:hover,
+.sidebar-link.is-active {
+  background: rgba(214, 224, 233, 0.88);
+}
+
+.single-column {
+  display: grid;
 }
 
 .hero {
@@ -543,6 +600,20 @@ canvas {
   }
 }
 
+@media (max-width: 980px) {
+  .dashboard-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+  }
+
+  .sidebar-menu {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 500px) {
   .hero,
   .workspace-grid,
@@ -552,6 +623,10 @@ canvas {
 
   .charts-grid{
     grid-template-columns: 0.5fr;
+  }
+
+  .sidebar-menu {
+    grid-template-columns: 1fr;
   }
 
   .hero-panel {

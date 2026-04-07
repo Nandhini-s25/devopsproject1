@@ -30,6 +30,28 @@ let authMode = "login";
 let currentUser = getCurrentUser();
 let editingTransactionId = null;
 
+function setupSidebarNavigation() {
+  const links = document.querySelectorAll(".sidebar-link");
+  const sections = document.querySelectorAll(".nav-section");
+
+  links.forEach((link) => {
+    link.addEventListener("click", () => {
+      const targetId = link.dataset.target;
+
+      sections.forEach((section) => {
+        section.classList.toggle("hidden-section", section.id !== targetId);
+      });
+
+      links.forEach((item) => item.classList.remove("is-active"));
+      links.forEach((item) => {
+        if (item.dataset.target === targetId) {
+          item.classList.add("is-active");
+        }
+      });
+    });
+  });
+}
+
 function makeId() {
   if (window.crypto && typeof window.crypto.randomUUID === "function") {
     return window.crypto.randomUUID();
@@ -525,6 +547,7 @@ function render() {
   authView.classList.add("hidden");
   dashboardView.classList.remove("hidden");
   resetForm();
+  setupSidebarNavigation();
   attachDashboardEvents();
   refreshDashboard();
 }
